@@ -28,12 +28,12 @@ public class AccountController {
     }
 
     @GetMapping("/{accountId}")
-    public ResponseEntity<AccountDTO> getAccount(@PathVariable Long accountId) {
+    public ResponseEntity<?> getAccount(@PathVariable Long accountId) {
         try {
             AccountDTO account = accountService.getAccount(accountId);
             return new ResponseEntity<>(account, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 }

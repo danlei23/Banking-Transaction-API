@@ -30,12 +30,12 @@ public class TransactionController {
     }
 
     @GetMapping("/{accountId}")
-    public ResponseEntity<List<TransactionDTO>> getTransactionHistory(@PathVariable Long accountId) {
+    public ResponseEntity<?> getTransactionHistory(@PathVariable Long accountId) {
         try {
             List<TransactionDTO> transactions = transactionService.getTransactionHistory(accountId);
             return new ResponseEntity<>(transactions, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
         }
     }
 }
