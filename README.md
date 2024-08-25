@@ -1,4 +1,4 @@
-# SpringBoot-Practice
+# Demo
 Banking Transaction API Task
 
 Sample:
